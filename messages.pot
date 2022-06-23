@@ -1,0 +1,237 @@
+# Translations template for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-06-18 12:34+0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: shop/__init__.py:41
+msgid "Please login first"
+msgstr ""
+
+#: shop/customers/forms.py:9
+msgid "Name: "
+msgstr ""
+
+#: shop/customers/forms.py:10 shop/customers/forms.py:30
+msgid "Email: "
+msgstr ""
+
+#: shop/customers/forms.py:11 shop/customers/forms.py:31
+msgid "Password: "
+msgstr ""
+
+#: shop/customers/forms.py:12
+msgid "Repeat Password: "
+msgstr ""
+
+#: shop/customers/forms.py:13
+msgid "City: "
+msgstr ""
+
+#: shop/customers/forms.py:14
+msgid "Contact: "
+msgstr ""
+
+#: shop/customers/forms.py:15
+msgid "Address: "
+msgstr ""
+
+#: shop/customers/forms.py:16 shop/templates/customer/register.html:11
+msgid "Register"
+msgstr ""
+
+#: shop/customers/forms.py:20
+msgid "This name is already in use!"
+msgstr ""
+
+#: shop/customers/forms.py:24
+msgid "This email address is already in use!"
+msgstr ""
+
+#: shop/customers/routes.py:28
+msgid "Welcome! Thank you for registering"
+msgstr ""
+
+#: shop/customers/routes.py:41
+msgid "You are login now!"
+msgstr ""
+
+#: shop/customers/routes.py:44
+msgid "Incorrect email and password"
+msgstr ""
+
+#: shop/customers/routes.py:82
+msgid "Your order has been sent successfully"
+msgstr ""
+
+#: shop/customers/routes.py:86
+msgid "Some thing went wrong while get order"
+msgstr ""
+
+#: shop/customers/routes.py:101
+msgid "The zakaz was sent from shop to address"
+msgstr ""
+
+#: shop/customers/routes.py:104
+msgid "The zakaz can't be  deleted from your database"
+msgstr ""
+
+#: shop/templates/navbar.html:65
+msgid "Categories"
+msgstr ""
+
+#: shop/templates/navbar.html:79
+msgid "Brands"
+msgstr ""
+
+#: shop/templates/navbar.html:92
+msgid "Search any product..."
+msgstr ""
+
+#: shop/templates/navbar.html:94
+msgid "Sign in"
+msgstr ""
+
+#: shop/templates/customer/login.html:7 shop/templates/navbar.html:95
+msgid "Login"
+msgstr ""
+
+#: shop/templates/navbar.html:101
+msgid "Profile"
+msgstr ""
+
+#: shop/templates/navbar.html:104
+msgid "Logout"
+msgstr ""
+
+#: shop/templates/navbar.html:105
+msgid "About Me"
+msgstr ""
+
+#: shop/templates/customer/aboutcustomer.html:5
+msgid "FullName:"
+msgstr ""
+
+#: shop/templates/customer/aboutcustomer.html:8
+msgid "Telephone"
+msgstr ""
+
+#: shop/templates/products/carts.html:10
+msgid "Sr"
+msgstr ""
+
+#: shop/templates/products/carts.html:11
+msgid "Image"
+msgstr ""
+
+#: shop/templates/products/carts.html:12
+msgid "Name"
+msgstr ""
+
+#: shop/templates/products/carts.html:13
+msgid "Color"
+msgstr ""
+
+#: shop/templates/products/carts.html:14 shop/templates/products/result.html:15
+msgid "Price"
+msgstr ""
+
+#: shop/templates/products/carts.html:15
+msgid "Quantity"
+msgstr ""
+
+#: shop/templates/products/carts.html:16 shop/templates/products/result.html:12
+msgid "Discount"
+msgstr ""
+
+#: shop/templates/products/carts.html:17
+msgid "Subtotal"
+msgstr ""
+
+#: shop/templates/products/carts.html:18 shop/templates/products/carts.html:50
+msgid "Update"
+msgstr ""
+
+#: shop/templates/products/carts.html:19 shop/templates/products/carts.html:52
+msgid "Delete"
+msgstr ""
+
+#: shop/templates/products/carts.html:31
+#: shop/templates/products/single_page.html:28
+msgid "Colors:"
+msgstr ""
+
+#: shop/templates/products/carts.html:46
+msgid "None"
+msgstr ""
+
+#: shop/templates/products/carts.html:59
+msgid "Order now"
+msgstr ""
+
+#: shop/templates/products/carts.html:61
+msgid "Grand total:"
+msgstr ""
+
+#: shop/templates/products/carts.html:62
+msgid "Clear cart"
+msgstr ""
+
+#: shop/templates/products/index.html:34
+msgid "Products"
+msgstr ""
+
+#: shop/templates/products/index.html:49 shop/templates/products/index.html:99
+#: shop/templates/products/index.html:149
+#: shop/templates/products/result.html:18
+msgid "Details"
+msgstr ""
+
+#: shop/templates/products/index.html:64 shop/templates/products/index.html:114
+#: shop/templates/products/index.html:164
+msgid "Previous"
+msgstr ""
+
+#: shop/templates/products/index.html:80 shop/templates/products/index.html:130
+#: shop/templates/products/index.html:180
+msgid "Next"
+msgstr ""
+
+#: shop/templates/products/result.html:21
+#: shop/templates/products/single_page.html:24
+msgid "Add to Cart"
+msgstr ""
+
+#: shop/templates/products/single_page.html:12
+msgid "Product name:"
+msgstr ""
+
+#: shop/templates/products/single_page.html:14
+msgid "Product price:"
+msgstr ""
+
+#: shop/templates/products/single_page.html:17
+msgid "Discount:"
+msgstr ""
+
+#: shop/templates/products/single_page.html:20
+msgid "Product description"
+msgstr ""
+
+#: shop/templates/products/single_page.html:25
+msgid "Quantity:"
+msgstr ""
+

@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="container">
+    <div class="row">
+      {% for product in products %}
+      <div class="col-md-3 mt-4">
+        <div class="card">
+            <img src="{{url_for('static', filename='images/' + product.image_1)}}" class="card-img-top" alt="{{product.name}}" height="200" width="200">
+            <div class="card-body">
+                {% if product.discount > 0 %}
+                <h5 style="text-shadow: 1px 2px 2px #000; color: white; position: absolute; top: 3%; left: 70%; font-weight: 600; border: 2px solid #ff8c00; background:#ff8c00; border-radius:50%; font-size:14px; font-family:italic;">-{{product.discount}}%</h5>
+                {% endif %}
+              <h5 class="text-center">{{product.name}}</h5>
+              <p class="text-center">{{ _('Price') }} ${{product.price}}</p>
+            </div>
+            <div class="card-footer">
+                <a href="{{url_for('single_page',id=product.id)}}" class="float-left btn btn-sm btn-primary">{{ _('Details')}}</a>
+                <form action="{{url_for('AddCart')}}" method="post">
+                  <input type="hidden" name="product_id" value="{{product.id}}">
+                  <button type="submit" class="btn btn-sm btn-warning float-right">{{ _('Add to Cart') }}</button>
+                  <input type="hidden" name="quantity" value="1" min="1" max="20">
+              </form>
+            </div>
+        </div>
+      </div>
+      {% endfor %}
+      </div>
+</div>
+{% endblock content %}

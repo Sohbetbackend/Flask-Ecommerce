@@ -1,0 +1,118 @@
+<style>
+  .navbarimages {
+    filter: opacity(0.4) drop-shadow(0 0 0 gray);
+  }
+
+  .dropdownMenu {
+    animation-name: test;
+    animation-duration: .3s;
+  }
+
+@keyframes test {
+  from{opacity: 0}
+  to{opacity: 1}
+}
+
+.dropdown {
+  border-bottom:2px solid transparent;
+}
+
+.dropdown:hover .dropdownMenu{
+  display: block;
+}
+
+.dropdown:hover {
+  border-bottom:2px solid blue;
+}
+
+.flaskh1 {
+    color: #ff6600;
+    font-size: 45px;
+  }
+
+.catbrand {
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+}
+
+
+</style>
+  <div class="container d-flex" style="margin-top: 10px;">
+    <img src="{{ url_for('static', filename='images/ynamdar.png') }}" style="height:60px; width:60px;"><a href="{{ url_for('home') }}" style="text-decoration:none;"><h1 class="flaskh1">𝓞𝓷𝓵𝓲𝓷𝓮 𝓜𝓪𝓻𝓴𝓮𝓽</h1></a>
+    <div class="d-flex" style="margin-left:50%;">
+    </div>
+  </div>
+  <hr style="margin-bottom:0;">
+  <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto catbrand">
+
+            <small><li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" style="font-size:14px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="navbar-toggler-icon"></span>
+               {{ _('Categories') }}
+              </a>
+              <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
+                {% for category in categories %}
+                <a class="dropdown-item" style="font-size: .8rem;" href="{{url_for('get_category', id=category.id)}}">{{category.name}}</a>
+                {% endfor %}
+              </div>
+            </li>
+            </small>
+
+
+            <small><li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" style="font-size:14px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="navbarimages" src="{{ url_for('static', filename='images/c.png') }}" style="width: 15px; height: 15px;" alt="">
+               {{ _('Brands') }}
+              </a>
+              <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
+                {% for brand in brands %}
+                <a class="dropdown-item" style="font-size: .8rem;" href="{{url_for('get_brand', id=brand.id)}}">{{brand.name}}</a>
+                {% endfor %}
+              </div>
+            </li>
+            </small>
+
+          </ul>
+          <small>
+          <form class="form-inline my-2 my-lg-0" action="{{url_for('result')}}">
+            <input class="form-control mr-sm-8 bg-light" style="width:450px; font-size:14px;" type="search" placeholder="{{ _('Search any product...') }}" aria-label="Search" name="q">
+            {% if CURRENT_LANGUAGE == 'tk' %}
+              <a class="nav-link" href="{{ url_for('set_language', language='en') }}">
+                <img src="{{ url_for('static', filename='images/engflag.png') }}" alt="" width="25px" height="20px">
+              </a>
+            {% else %}
+              <a class="nav-link" href="{{ url_for('set_language', language='tk') }}">
+                <img src="{{ url_for('static', filename='images/tkmflag.png') }}" alt="" width="25px" height="20px">
+              </a>
+            {% endif %}
+            {% if current_user.is_anonymous %}
+            <a href="{{url_for('customer_register')}}" class="nav-link text-dark" style="font-size:14px;"><img src="{{ url_for('static', filename='images/add-friend.png') }}" class="navbarimages" style="width: 16px; height: 16px" alt=""> {{ _('Sign in') }}</a>
+            <a href="{{url_for('customerLogin')}}" class="nav-link text-dark" style="font-size:14px;"><img src="{{ url_for('static', filename='images/enter.png') }}" class="navbarimages" style="width: 15px; height: 15px" alt=""> {{ _('Login') }}</a>
+            {% endif %}
+            {% if current_user.is_authenticated %}
+              <div class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 14px;">
+                 <span class="navbar-toggler-icon"></span>
+                 {{ _('Profile') }}
+                </a>
+                <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
+                  <a href="{{url_for('customer_logout')}}" class="nav-link text-dark" style="font-size: .8rem;"><img src="{{ url_for('static', filename='images/logout.png') }}" class="navbarimages" style="width: 15px; height: 15px" alt="">{{ _('Logout') }}</a>
+                  <a href="{{ url_for('aboutCustomer', name=current_user.name) }}" class="nav-link text-dark" style="font-size: .8rem;"><img src="{{ url_for('static', filename='images/aboutme.png') }}" class="navbarimages" style="width:15px; height:15px" alt=""> {{ _('About Me') }}</a>
+                </div>
+              </div>
+            {% endif %}
+            <a href="{{url_for('getCart')}}" class="nav-link text-dark"><img src="{{ url_for('static', filename='images/cart.png') }}" style="width: 23px; height: 25px" alt="">  ({{ session['Shoppingcart']|length }}) </a>
+          </form>
+          </small>
+        </div>
+      </nav>
+
+</div>
+<!---============== END OF NAV BAR ==================-->

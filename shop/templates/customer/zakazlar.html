@@ -1,0 +1,55 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'admin/adminnavbar.html' %}
+<div class="container mt-4">
+    {% include '_messages.html' %}
+    <div class="row">
+        <div class="col-md-12">
+          <table class="table table-sm">
+              <thead>
+                  <th>Sr</th>
+                  <th>Customer</th>
+                  <th>Adress</th>
+                  <th>Contact</th>
+                  <th>Orders</th>
+                  <th>Price</th>
+                  <th>Discount</th>
+                  <th>Quantity</th>
+                  <th>Grandtotal</th>
+                  <th>Date order</th>
+                  <th>Ugradyldy?</th>
+              </thead>
+              <tbody>
+                  {% for orders in orders %}
+                  {% for key, product in orders.orders.items() %}
+                  <tr>
+                      <td>{{ orders.id }}</td>
+                      <td>{{ orders.customer.name }}</td>
+                      <td>{{ orders.customer.address }}</td>
+                      <td>{{ orders.customer.contact }}</td>
+                      <td>{{ product.name }}</td>
+                      <td>${{"%.2f"|format(product.price)}}</td>
+                      {% set discount =(product.discount/100) * product.price|float %}
+                      {% if product.discount  %}
+                      <td>{{product.discount}} % is {{"%.2f"|format(discount)}}</td>
+                      {% else %}
+                      <td>YOK!</td>
+                      {% endif %}
+                      <td>{{ product.quantity }}</td>
+                      {% set subtotal = product.quantity|int * product.price|float  %}
+                      <td>${{"%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
+                      <td>{{ moment(orders.date_ordered).format('LLL') }}</td>
+                      <td>
+                      <form action="{{url_for('deletezakaz',id=orders.id)}}" method="post">
+                        <button type="submit" class="btn btn-success">Ugradyldy</button>
+                      </form>
+                      </td>
+                  </tr>
+                  {% endfor %}
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+{% endblock content %}

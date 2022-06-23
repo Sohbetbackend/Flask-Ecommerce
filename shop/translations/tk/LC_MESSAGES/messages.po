@@ -1,0 +1,237 @@
+# Turkmen translations for PROJECT.
+# Copyright (C) 2022 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2022.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2022-06-18 12:34+0500\n"
+"PO-Revision-Date: 2022-06-18 11:41+0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: tk\n"
+"Language-Team: tk <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.10.3\n"
+
+#: shop/__init__.py:41
+msgid "Please login first"
+msgstr "Haýyş edýäs ulgama giriň"
+
+#: shop/customers/forms.py:9
+msgid "Name: "
+msgstr "Adyňyz:"
+
+#: shop/customers/forms.py:10 shop/customers/forms.py:30
+msgid "Email: "
+msgstr "Email poçtaňyz:"
+
+#: shop/customers/forms.py:11 shop/customers/forms.py:31
+msgid "Password: "
+msgstr "Açar söz:"
+
+#: shop/customers/forms.py:12
+msgid "Repeat Password: "
+msgstr "Açar sözi gaýtalaň:"
+
+#: shop/customers/forms.py:13
+msgid "City: "
+msgstr "Şäher:"
+
+#: shop/customers/forms.py:14
+msgid "Contact: "
+msgstr "Habarlaşmak:"
+
+#: shop/customers/forms.py:15
+msgid "Address: "
+msgstr "Adresiňiz:"
+
+#: shop/customers/forms.py:16 shop/templates/customer/register.html:11
+msgid "Register"
+msgstr "Registrasiýa"
+
+#: shop/customers/forms.py:20
+msgid "This name is already in use!"
+msgstr "Ulanyjy ady eýýäm ulanylan!"
+
+#: shop/customers/forms.py:24
+msgid "This email address is already in use!"
+msgstr "Ulanyjy poçta eýýäm ulanylan!"
+
+#: shop/customers/routes.py:28
+msgid "Welcome! Thank you for registering"
+msgstr "Hoş geldiňiz! Registrasiýa bolanyňyz üçin minnetdar"
+
+#: shop/customers/routes.py:41
+msgid "You are login now!"
+msgstr "Içeri girdiňiz!"
+
+#: shop/customers/routes.py:44
+msgid "Incorrect email and password"
+msgstr "Nädogry email ýada açar söz"
+
+#: shop/customers/routes.py:82
+msgid "Your order has been sent successfully"
+msgstr "Siziň zakazyňyz ugradyldy"
+
+#: shop/customers/routes.py:86
+msgid "Some thing went wrong while get order"
+msgstr "Birzatlar nädogry"
+
+#: shop/customers/routes.py:101
+msgid "The zakaz was sent from shop to address"
+msgstr "Zakaz dükandan adresa ugradyldy"
+
+#: shop/customers/routes.py:104
+msgid "The zakaz can't be  deleted from your database"
+msgstr "Zakaz database pozulmady"
+
+#: shop/templates/navbar.html:65
+msgid "Categories"
+msgstr "Kategoriýa"
+
+#: shop/templates/navbar.html:79
+msgid "Brands"
+msgstr "Brendlar"
+
+#: shop/templates/navbar.html:92
+msgid "Search any product..."
+msgstr "Islendik önümiňizi gözlediň..."
+
+#: shop/templates/navbar.html:94
+msgid "Sign in"
+msgstr "Agza bol"
+
+#: shop/templates/customer/login.html:7 shop/templates/navbar.html:95
+msgid "Login"
+msgstr "Içeri gir"
+
+#: shop/templates/navbar.html:101
+msgid "Profile"
+msgstr "Hasabym"
+
+#: shop/templates/navbar.html:104
+msgid "Logout"
+msgstr "Çyk"
+
+#: shop/templates/navbar.html:105
+msgid "About Me"
+msgstr "Maglumatym"
+
+#: shop/templates/customer/aboutcustomer.html:5
+msgid "FullName:"
+msgstr "Doly at:"
+
+#: shop/templates/customer/aboutcustomer.html:8
+msgid "Telephone"
+msgstr "Telefon"
+
+#: shop/templates/products/carts.html:10
+msgid "Sr"
+msgstr "Sn"
+
+#: shop/templates/products/carts.html:11
+msgid "Image"
+msgstr "Surat"
+
+#: shop/templates/products/carts.html:12
+msgid "Name"
+msgstr "Ady"
+
+#: shop/templates/products/carts.html:13
+msgid "Color"
+msgstr "Reňki"
+
+#: shop/templates/products/carts.html:14 shop/templates/products/result.html:15
+msgid "Price"
+msgstr "Bahasy"
+
+#: shop/templates/products/carts.html:15
+msgid "Quantity"
+msgstr "Sany"
+
+#: shop/templates/products/carts.html:16 shop/templates/products/result.html:12
+msgid "Discount"
+msgstr "Arzanladyş"
+
+#: shop/templates/products/carts.html:17
+msgid "Subtotal"
+msgstr "Şot"
+
+#: shop/templates/products/carts.html:18 shop/templates/products/carts.html:50
+msgid "Update"
+msgstr "Täzele"
+
+#: shop/templates/products/carts.html:19 shop/templates/products/carts.html:52
+msgid "Delete"
+msgstr "Poz"
+
+#: shop/templates/products/carts.html:31
+#: shop/templates/products/single_page.html:28
+msgid "Colors:"
+msgstr "Reňkler:"
+
+#: shop/templates/products/carts.html:46
+msgid "None"
+msgstr "Hiç"
+
+#: shop/templates/products/carts.html:59
+msgid "Order now"
+msgstr "Zakaz et"
+
+#: shop/templates/products/carts.html:61
+msgid "Grand total:"
+msgstr "Doly baha:"
+
+#: shop/templates/products/carts.html:62
+msgid "Clear cart"
+msgstr "Sebedi arassala"
+
+#: shop/templates/products/index.html:34
+msgid "Products"
+msgstr "Önümler"
+
+#: shop/templates/products/index.html:49 shop/templates/products/index.html:99
+#: shop/templates/products/index.html:149
+#: shop/templates/products/result.html:18
+msgid "Details"
+msgstr "Giňişleýin"
+
+#: shop/templates/products/index.html:64 shop/templates/products/index.html:114
+#: shop/templates/products/index.html:164
+msgid "Previous"
+msgstr "Önki"
+
+#: shop/templates/products/index.html:80 shop/templates/products/index.html:130
+#: shop/templates/products/index.html:180
+msgid "Next"
+msgstr "Indiki"
+
+#: shop/templates/products/result.html:21
+#: shop/templates/products/single_page.html:24
+msgid "Add to Cart"
+msgstr "Sebede goş"
+
+#: shop/templates/products/single_page.html:12
+msgid "Product name:"
+msgstr "Önümiň ady"
+
+#: shop/templates/products/single_page.html:14
+msgid "Product price:"
+msgstr "Önümiň bahasy"
+
+#: shop/templates/products/single_page.html:17
+msgid "Discount:"
+msgstr "Arzanladyş"
+
+#: shop/templates/products/single_page.html:20
+msgid "Product description"
+msgstr "Önümiň maglumaty"
+
+#: shop/templates/products/single_page.html:25
+msgid "Quantity:"
+msgstr "Sany"

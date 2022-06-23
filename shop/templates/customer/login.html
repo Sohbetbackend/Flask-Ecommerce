@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container" style="height:100vh; padding-top:20vh">
+    <div class="row" style="height:40vh;">
+        <div class="col-md-3"></div>
+            <div class="col-md-6 bg-light">
+                <div class="text-center p-2 h3"><b>{{ _('Login') }}</b></div>
+                {% from "_formhelpers.html" import render_field %}
+                {% include '_messages.html' %}
+                <form method=post>
+                    {{form.csrf_token}}
+                    <div>
+                        {{ render_field(form.email, class="form-control") }}
+                        {{ render_field(form.password, class="form-control") }}
+                    </div>
+                    <input type="submit" value="Login" class="btn btn-sm btn-info">
+                </form>
+            </div>
+      <div class="col-md-3"></div>
+    </div>
+</div>
+{% endblock content %}
