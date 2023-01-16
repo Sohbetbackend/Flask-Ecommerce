@@ -26,7 +26,7 @@
 }
 
 .flaskh1 {
-    color: #ff6600;
+    color: green;
     font-size: 45px;
   }
 
@@ -39,7 +39,7 @@
 
 </style>
   <div class="container d-flex" style="margin-top: 10px;">
-    <img src="{{ url_for('static', filename='images/ynamdar.png') }}" style="height:60px; width:60px;"><a href="{{ url_for('home') }}" style="text-decoration:none;"><h1 class="flaskh1">𝓞𝓷𝓵𝓲𝓷𝓮 𝓜𝓪𝓻𝓴𝓮𝓽</h1></a>
+    <img src="{{ url_for('static', filename='images/logoaptek.jpg') }}" style="height:60px; width:60px;"><a href="{{ url_for('home') }}" style="text-decoration:none;"><h1 class="flaskh1">𝓞𝓷𝓵𝓲𝓷𝓮 𝓜𝓪𝓻𝓴𝓮𝓽</h1></a>
     <div class="d-flex" style="margin-left:50%;">
     </div>
   </div>
@@ -63,22 +63,7 @@
                 {% endfor %}
               </div>
             </li>
-            </small>
-
-
-            <small><li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle active" href="#" id="navbarDropdown" role="button" style="font-size:14px;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <img class="navbarimages" src="{{ url_for('static', filename='images/c.png') }}" style="width: 15px; height: 15px;" alt="">
-               {{ _('Brands') }}
-              </a>
-              <div class="dropdown-menu dropdownMenu" aria-labelledby="navbarDropdown">
-                {% for brand in brands %}
-                <a class="dropdown-item" style="font-size: .8rem;" href="{{url_for('get_brand', id=brand.id)}}">{{brand.name}}</a>
-                {% endfor %}
-              </div>
-            </li>
-            </small>
-
+            </small>          
           </ul>
           <small>
           <form class="form-inline my-2 my-lg-0" action="{{url_for('result')}}">

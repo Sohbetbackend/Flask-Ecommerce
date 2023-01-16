@@ -235,3 +235,4 @@ msgstr "Önümiň maglumaty"
 #: shop/templates/products/single_page.html:25
 msgid "Quantity:"
 msgstr "Sany"
+

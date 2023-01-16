@@ -22,7 +22,7 @@
                 {% set discount =(product.discount/100) * product.price|float %}
                 <tr>
                     <td>{{loop.index}}</td>
-                    <td><img src="{{url_for('static',filename='images/'+ product.image)}}" alt="{{product.name}}" width="50" height="45"></td>
+                    <td><img src="{{url_for('static',filename='product_images/'+ product.image)}}" alt="{{product.name}}" width="50" height="45" style="object-fit: contain;"></td>
                     <td>{{product.name}}</td>
                     <form action="{{url_for('updatecart', code=key)}}" method="post">
                     <td>${{"%.2f"|format(product.price)}}</td>

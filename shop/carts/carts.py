@@ -1,7 +1,7 @@
 from flask import render_template,session, request,redirect,url_for,flash,current_app
 from shop import db , app
 from shop.products.models import Addproduct
-from shop.products.routes import brands, categories
+from shop.products.routes import categories
 import json
 
 def MagerDicts(dict1,dict2):
@@ -51,7 +51,7 @@ def getCart():
         subtotal += float(product['price']) * int(product['quantity'])
         subtotal -= discount
         grandtotal = subtotal
-    return render_template('products/carts.html', grandtotal=grandtotal,brands=brands(),categories=categories())
+    return render_template('products/carts.html', grandtotal=grandtotal,categories=categories())
 
 
 

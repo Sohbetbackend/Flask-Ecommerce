@@ -4,14 +4,11 @@ from flask_babel import _
 from shop import app,db,photos, search,bcrypt,login_manager
 from .forms import CustomerRegisterForm, CustomerLoginFrom
 from .model import Register,CustomerOrder
-from shop.products.models import Brand, Category, Addproduct
+from shop.products.models import Category, Addproduct
 import secrets
 import os
 import json
 
-def brands():
-    brands = Brand.query.join(Addproduct, (Brand.id == Addproduct.brand_id)).all()
-    return brands
 
 def categories():
     categories = Category.query.join(Addproduct,(Category.id == Addproduct.category_id)).all()
@@ -23,7 +20,7 @@ def customer_register():
     form = CustomerRegisterForm()
     if form.validate_on_submit():
         hash_password = bcrypt.generate_password_hash(form.password.data)
-        register = Register(name=form.name.data, email=form.email.data,password=hash_password, city=form.city.data,contact=form.contact.data, address=form.address.data)
+        register = Register(name=form.name.data, password=hash_password, contact=form.contact.data, address=form.address.data)
         db.session.add(register)
         flash(_('Welcome! Thank you for registering'))
         db.session.commit()
@@ -35,7 +32,7 @@ def customer_register():
 def customerLogin():
     form = CustomerLoginFrom()
     if form.validate_on_submit():
-        user = Register.query.filter_by(email=form.email.data).first()
+        user = Register.query.filter_by(contact=form.contact.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             flash(_('You are login now!'))
@@ -57,7 +54,7 @@ def customer_logout():
 @login_required
 def aboutCustomer(name):
     user = Register.query.filter_by(name=name).first_or_404()
-    return render_template('customer/aboutcustomer.html', user=user, brands=brands(),categories=categories())
+    return render_template('customer/aboutcustomer.html', user=user, categories=categories())
 
 
 def updateshoppingcart():
@@ -91,7 +88,7 @@ def zakazlar():
     if 'email' not in session:
         return redirect(url_for('login'))
     orders = CustomerOrder.query.order_by(CustomerOrder.id.desc()).all()
-    return render_template('customer/zakazlar.html', orders=orders, brands=brands(), categories=categories())
+    return render_template('customer/zakazlar.html', orders=orders, categories=categories())
 
 
 @app.route('/admin/deletezakaz/<int:id>', methods=['GET','POST'])

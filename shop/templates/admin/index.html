@@ -6,24 +6,24 @@
 
     <table class="table tbale-sm">
         <thead>
-            <th>Sr</th>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Discount</th>
-            <th>Brand</th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th>T/B</th>
+            <th>Surat</th>
+            <th>Ady</th>
+            <th>Bahasy</th>
+            <th>Skidka?</th>
+            <th>Kategoriya</th>
+            <th>Dogrula</th>
+            <th>Pozmak</th>
         </thead>
         <tbody>
           {% for product in products %}
           <tr>
             <td>{{loop.index}}</td>
-            <td> <img src="{{url_for('static',filename='images/' + product.image_1)}}" alt="{{product.name}}" width="50" height="20"></td>
+            <td> <img src="{{url_for('static',filename='product_images/' + product.image_1)}}" alt="{{product.name}}" width="80" height="60" style="object-fit: contain;"></td>
             <td>{{ product.name }}</td>
-            <td>{{ product.price }}</td>
+            <td>{{ product.price }} manat</td>
             <td>{{ product.discount }}</td>
-            <td>{{ product.brand.name}}</td>
+            <td>{{ product.category.name}}</td>
             <td> <a href="{{url_for('updateproduct', id=product.id)}}" class="btn btn-sm btn-info">Edit </a> </td>
             <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{product.id}}">
               Delete
