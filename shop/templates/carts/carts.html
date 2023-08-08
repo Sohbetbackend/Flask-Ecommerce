@@ -13,7 +13,7 @@
                 <th>{{ _('Price') }}</th>
                 <th>{{ _('Quantity') }}</th>
                 <th>{{ _('Discount') }}</th>
-                <th>{{ _('Subtotal') }}</th>
+                <th>{{ _('Total') }}</th>
                 <th>{{ _('Update') }}</th>
                 <th>{{ _('Delete') }}</th>
             </thead>
@@ -25,7 +25,7 @@
                     <td><img src="{{url_for('static',filename='product_images/'+ product.image)}}" alt="{{product.name}}" width="50" height="45" style="object-fit: contain;"></td>
                     <td>{{product.name}}</td>
                     <form action="{{url_for('updatecart', code=key)}}" method="post">
-                    <td>${{"%.2f"|format(product.price)}}</td>
+                    <td>{{"%.2f"|format(product.price)}} manat</td>
                     <td> <input type="number" name="quantity" min="1" max="10" value="{{product.quantity}}"> </td>
                     {% if product.discount  %}
                     <td>{{product.discount}} % &nbsp; &nbsp; = {{"%.2f"|format(discount)}}</td>
@@ -33,7 +33,7 @@
                     <td>{{ _('None') }}</td>
                     {% endif %}
                     {% set subtotal = product.quantity|int * product.price|float  %}
-                    <td>${{"%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
+                    <td>{{"%.2f"|format(subtotal - discount|round(1,'floor')) }} manat</td>
                     <td><button type="submit" class="btn btn-sm btn-info">{{ _('Update' ) }}</button> </td>
                 </form>
                     <td> <a href="{{url_for('deleteitem', id=key)}}" class="btn btn-sm btn-danger">{{ _('Delete') }}</a></td>
@@ -45,7 +45,7 @@
            <tr>
                <td> <a href="{{url_for('get_order')}}" class="btn btn-success">{{ _('Order now') }} </a> </td>
                <td width="35%"></td>
-               <td> <h5>{{ _('Grand total:') }} ${{grandtotal}}</h5> </td>
+               <td> <h5>{{ _('Grand total:') }} {{grandtotal}} manat</h5> </td>
                 <td> <a href="{{url_for('clearcart')}}" class="btn btn-danger btn-sm float-right mr-4">{{ _('Clear cart') }}</a> </td>
            </tr>
         </table>

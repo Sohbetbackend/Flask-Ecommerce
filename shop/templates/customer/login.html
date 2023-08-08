@@ -1,19 +1,33 @@
 {% extends "layout.html" %}
 {% block content %}
+{% include 'navbar.html' %}
+<style>
+    .wrapper {
+      position: relative;
+    }
+    .wrapper span {
+      position: absolute;
+      left: 2px;
+    }
+    input {
+      padding-left: 45px;
+    }
+  </style>
 <div class="container" style="height:100vh; padding-top:20vh">
     <div class="row" style="height:40vh;">
         <div class="col-md-3"></div>
             <div class="col-md-6 bg-light">
+                <img src="{{ url_for('static', filename='images/logoaptek.jpg') }}" alt="" style="height: 10vh; width:10vh; margin-left: 42%;">
                 <div class="text-center p-2 h3"><b>{{ _('Login') }}</b></div>
                 {% from "_formhelpers.html" import render_field %}
                 {% include '_messages.html' %}
                 <form method=post>
                     {{form.csrf_token}}
                     <div>
-                        {{ render_field(form.contact, class="form-control") }}
+                        {{ render_field(form.contact, class='form-control') }}
                         {{ render_field(form.password, class="form-control") }}
                     </div>
-                    <input type="submit" value="Login" class="btn btn-sm btn-info">
+                    <input type="submit" value="Login" class="btn btn-sm btn-success">
                 </form>
             </div>
       <div class="col-md-3"></div>

@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'admin/adminnavbar.html' %}
+
+<div class="container">
+    {% include '_messages.html' %}
+    <table class="table tbale-sm">
+        <thead>
+            <th>Sr</th>
+            <th>Ady</th>
+            <th>Telefon</th>
+            <th>Adresi</th>
+            <th>Paroly</th>  
+            <th>Pozmak</th>
+        </thead>
+        <tbody>
+          {% for customers in customers %}
+          <tr>
+            <td>{{loop.index}}</td>
+            <td>{{ customers.name }}</td>
+            <td>{{ customers.contact }}</td>
+            <td>{{ customers.address }}</td>
+            <td>{{ customers.password }}</td>
+            <td><button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal-{{customers.id}}">
+              Pozmak
+            </button></td>
+          </tr>
+
+
+<!--============= MODEL ===================-->
+      <div class="modal fade" id="exampleModal-{{customers.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">{{customers.name }}</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p class="text-danger">Siz ({{ customers.name }}) ulanyjyny pozmak isleyarsinizmi? </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Yok</button>
+              <form action="{{url_for('deletecustomer',id=customers.id)}}" method="post">
+                <button type="submit" class="btn btn-danger">Hovva</button>
+              </form>
+
+            </div>
+          </div>
+        </div>
+      </div>
+<!--==============MODEL ===================-->
+
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock content %}

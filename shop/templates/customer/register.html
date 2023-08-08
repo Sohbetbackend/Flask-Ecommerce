@@ -1,14 +1,27 @@
 {% extends "layout.html" %}
 {% block content %}
 {% from "_formhelpers.html" import render_field %}
-
-
+{% include 'navbar.html' %}
+<style>
+  .wrapper {
+    position: relative;
+  }
+  .wrapper span {
+    position: absolute;
+    left: 2px;
+  }
+  input {
+    padding-left: 45px;
+  }
+</style>
 <div class="container" style="height:100vh; padding-top:10vh">
     <form action="" method="post" class="bg-light" style="height:80vh">
       <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
+          <img src="{{ url_for('static', filename='images/logoaptek.jpg') }}" alt="" style="height: 10vh; width: 10vh; margin-left:42%;">
           <h1 class="text-center">{{ _('Register') }}</h1>
+          <p class="text-center">Be attention. In Address part please write your adress fully</p>
         </div>
         <div class="col-md-2"></div>
       </div>
@@ -21,9 +34,11 @@
                 {{ render_field(form.confirm ,class="form-control")}}
             </div>
             <div class="col-md-4">
-                {{ render_field(form.contact, class="form-control")}}
+              <br>
+              <br>
+                {{ render_field(form.contact, class='form-control') }}
                 {{ render_field(form.address, class="form-control")}}
-                {{ form.submit(class="btn btn-sm btn-info float-right") }}
+                {{ form.submit(class="btn btn-sm btn-success float-right") }}
             </div>
             <div class="col-md-2"></div>
         </div>

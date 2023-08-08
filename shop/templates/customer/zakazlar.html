@@ -18,6 +18,8 @@
                   <th>Grandtotal</th>
                   <th>Date order</th>
                   <th>Ugradyldy?</th>
+                  <th>App Name</th>
+                  <th>App Contact</th>
               </thead>
               <tbody>
                   {% for orders in orders %}
@@ -28,7 +30,7 @@
                       <td>{{ orders.customer.address }}</td>
                       <td>{{ orders.customer.contact }}</td>
                       <td>{{ product.name }}</td>
-                      <td>${{"%.2f"|format(product.price)}}</td>
+                      <td>{{"%.2f"|format(product.price)}} manat</td>
                       {% set discount =(product.discount/100) * product.price|float %}
                       {% if product.discount  %}
                       <td>{{product.discount}} % is {{"%.2f"|format(discount)}}</td>
@@ -37,13 +39,15 @@
                       {% endif %}
                       <td>{{ product.quantity }}</td>
                       {% set subtotal = product.quantity|int * product.price|float  %}
-                      <td>${{"%.2f"|format(subtotal - discount|round(1,'floor')) }}</td>
-                      <td>{{ moment(orders.date_ordered).format('LLL') }}</td>
+                      <td>{{"%.2f"|format(subtotal - discount|round(1,'floor')) }} manat</td>
+                      <td>{{ moment(orders.date_ordered).format('LL') }}</td>
                       <td>
                       <form action="{{url_for('deletezakaz',id=orders.id)}}" method="post">
                         <button type="submit" class="btn btn-success">Ugradyldy</button>
                       </form>
                       </td>
+                      <td>{{ orders.customer_name }}</td>
+                      <td>{{ orders.customer_contact }}</td>
                   </tr>
                   {% endfor %}
                   {% endfor %}

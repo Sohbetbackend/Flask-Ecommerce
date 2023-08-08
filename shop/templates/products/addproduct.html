@@ -40,7 +40,9 @@
                         </div>
 
                         {% else %}
-                        <div class="col-md-4">{{ render_field(form.image_1) }}</div>
+                        <div class="col-md-4">
+                            <input type="file" id="files" name="files" multiple>
+                        </div>
                         {% endif %}
                     </div>
                 </div>

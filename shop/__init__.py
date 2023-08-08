@@ -1,19 +1,19 @@
-from flask import Flask, request, session
+from flask import Flask, session
 from flask_sqlalchemy import SQLAlchemy
-from flask_bcrypt import Bcrypt
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
 import os
-from flask_marshmallow import Marshmallow
-from flask_restful import Api, Resource
+from flask_restful import Api
 from flask_msearch import Search
 from flask_login import LoginManager
 from flask_babel import Babel, lazy_gettext as _l
 from flask_moment import Moment
+from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
+
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://root:root@localhost/dermanhana'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 app.config['SECRET_KEY']='hfouewhfoiwefoquw'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['LANGUAGES'] = ['en', 'tk']
@@ -23,14 +23,13 @@ configure_uploads(app, photos)
 patch_request_class(app)
 
 db = SQLAlchemy(app)
-ma = Marshmallow(app)
 api = Api(app)
-bcrypt = Bcrypt(app)
 search = Search()
 babel = Babel(app)
 moment = Moment(app)
 search.init_app(app)
 migrate = Migrate(app, db)
+bcrypt = Bcrypt(app)
 
 
 login_manager = LoginManager()
@@ -51,11 +50,20 @@ def get_locale():
     return 'tk'
 
 
-from shop.products import routes
-from shop.admin import routes
-from shop.carts import carts
-from shop.customers import routes
-from shop.api import routes
+from shop.products import bp as products_bp
+app.register_blueprint(products_bp)
+
+from shop.admin import bp as admin_bp
+app.register_blueprint(admin_bp)
+
+from shop.carts import bp as carts_bp
+app.register_blueprint(carts_bp)
+
+from shop.customers import bp as customers_bp
+app.register_blueprint(customers_bp)
+
+from shop.api import bp as api_bp
+app.register_blueprint(api_bp, url_prefix='/api')
 
 
 @app.context_processor

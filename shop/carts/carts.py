@@ -1,8 +1,8 @@
-from flask import render_template,session, request,redirect,url_for,flash,current_app
-from shop import db , app
+from flask import render_template,session, request,redirect,url_for,flash
+from shop.carts import bp
 from shop.products.models import Addproduct
 from shop.products.routes import categories
-import json
+
 
 def MagerDicts(dict1,dict2):
     if isinstance(dict1, list) and isinstance(dict2,list):
@@ -10,7 +10,8 @@ def MagerDicts(dict1,dict2):
     if isinstance(dict1, dict) and isinstance(dict2, dict):
         return dict(list(dict1.items()) + list(dict2.items()))
 
-@app.route('/addcart', methods=['POST'])
+
+@bp.route('/addcart', methods=['POST'])
 def AddCart():
     try:
         product_id = request.form.get('product_id')
@@ -40,7 +41,7 @@ def AddCart():
 
 
 
-@app.route('/carts')
+@bp.route('/carts')
 def getCart():
     if 'Shoppingcart' not in session or len(session['Shoppingcart']) <= 0:
         return redirect(url_for('home'))
@@ -55,13 +56,12 @@ def getCart():
 
 
 
-@app.route('/updatecart/<int:code>', methods=['POST'])
+@bp.route('/updatecart/<int:code>', methods=['POST'])
 def updatecart(code):
     if 'Shoppingcart' not in session or len(session['Shoppingcart']) <= 0:
         return redirect(url_for('home'))
     if request.method =="POST":
         quantity = request.form.get('quantity')
-        color = request.form.get('color')
         try:
             session.modified = True
             for key , item in session['Shoppingcart'].items():
@@ -75,13 +75,13 @@ def updatecart(code):
 
 
 
-@app.route('/deleteitem/<int:id>')
+@bp.route('/deleteitem/<int:id>')
 def deleteitem(id):
     if 'Shoppingcart' not in session or len(session['Shoppingcart']) <= 0:
         return redirect(url_for('home'))
     try:
         session.modified = True
-        for key , item in session['Shoppingcart'].items():
+        for key ,item in session['Shoppingcart'].items():
             if int(key) == id:
                 session['Shoppingcart'].pop(key, None)
                 return redirect(url_for('getCart'))
@@ -90,7 +90,7 @@ def deleteitem(id):
         return redirect(url_for('getCart'))
 
 
-@app.route('/clearcart')
+@bp.route('/clearcart')
 def clearcart():
     try:
         session.pop('Shoppingcart', None)

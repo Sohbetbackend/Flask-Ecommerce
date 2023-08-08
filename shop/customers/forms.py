@@ -1,8 +1,7 @@
-from wtforms import Form, StringField, TextAreaField, PasswordField,SubmitField,validators, ValidationError
-from flask_wtf.file import FileRequired,FileAllowed, FileField
+from wtforms import StringField, PasswordField,SubmitField,validators, ValidationError 
 from flask_wtf import FlaskForm
 from flask_babel import lazy_gettext as _l
-from .model import Register
+from .model import Customer
 
 
 class CustomerRegisterForm(FlaskForm):
@@ -14,12 +13,12 @@ class CustomerRegisterForm(FlaskForm):
     submit = SubmitField(_l('Register'))
 
     def validate_username(self, name):
-        if Register.query.filter_by(name=name.data).first():
+        if Customer.query.filter_by(name=name.data).first():
             raise ValidationError(_l("This name is already in use!"))
 
-    def validate_email(self, email):
-        if Register.query.filter_by(email=email.data).first():
-            raise ValidationError(_l("This email address is already in use!"))
+    def validate_email(self, contact):
+        if Customer.query.filter_by(contact=contact.data).first():
+            raise ValidationError(_l("This phone number is already in use!"))
 
 
 

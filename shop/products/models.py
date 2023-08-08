@@ -2,8 +2,19 @@ from shop import db
 from datetime import datetime
 
 
-class Addproduct(db.Model):
-    __seachbale__ = ['name','desc']
+class ProductAPIMixin(object):
+    @staticmethod
+    def to_collection_dict(query, page, per_page, endpoint, **kwargs):
+        resources = query.paginate(page=page, per_page=per_page,
+                                   error_out=False)
+        data = {
+            'data': [item.to_dict() for item in resources.items],
+        }
+        return data
+
+
+class Addproduct(db.Model, ProductAPIMixin):
+    __searchable__ = ['name','desc']
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), nullable=False)
     price = db.Column(db.Integer, nullable=False)
@@ -16,33 +27,82 @@ class Addproduct(db.Model):
     category = db.relationship('Category',backref=db.backref('categories', lazy=True))
 
     image_1 = db.Column(db.String(150), nullable=False, default='image1.jpg')
-    image_prod_url = db.Column(db.Text)
 
 
     def __repr__(self):
         return '<Post %r>' % self.name
 
+    
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+            'price': self.price,
+            'category': self.category_id,   
+            'stock': self.stock,
+            'desc': self.desc,
+            'image_prod_url': self.image_1,
+        }
+        return data
 
 
-class Category(db.Model):
+class CategoryAPIMixin(object):
+    @staticmethod
+    def to_collection_dict(query, page, per_page, endpoint, **kwargs):
+        resources = query.paginate(page=page, per_page=per_page,
+                                   error_out=False)
+        data = {
+            'data': [item.to_dict() for item in resources.items],
+        }
+        return data
+
+
+class Category(db.Model, CategoryAPIMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(30), unique=True, nullable=False)
     image_category = db.Column(db.String(150))
-    image_cat_url = db.Column(db.Text)
 
 
     def __repr__(self):
-        return '<Catgory %r>' % self.name
+        return '<Category %r>' % self.name
 
 
-class Banner(db.Model):
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+            'image_cat_url': self.image_category,
+        }
+        return data
+
+
+class BannerAPIMixin(object):
+    @staticmethod
+    def to_collection_dict(query, page, per_page, endpoint, **kwargs):
+        resources = query.paginate(page=page, per_page=per_page,
+                                   error_out=False)
+        data = {
+            'data': [item.to_dict() for item in resources.items],
+        }
+        return data
+
+
+class Banner(db.Model, BannerAPIMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(250))
     image_banner = db.Column(db.String(250))
-    image_ban_url = db.Column(db.Text)
 
     def __repr__(self):
         return '<Banner %r>' % self.name
+
+
+    def to_dict(self):
+        data = {
+            'id': self.id,
+            'name': self.name,
+            'image_ban_url': self.image_banner,
+        }
+        return data
 
 
 db.create_all()
