@@ -9,10 +9,11 @@
                 {% from "_formhelpers.html" import render_field %}
                 <form method="post" enctype="multipart/form-data">
                 <div>
-                    {{ render_field(form.name, class="form-control") }}
-                    {{ render_field(form.price, class="form-control") }}
-                    {{ render_field(form.discount, class="form-control") }}
-                    {{ render_field(form.stock, class="form-control") }}
+                    
+                    {{ render_field(form.name, class="form-control") }} 
+                    {{ render_field(form.price, class="form-control") }}  
+                    {{ render_field(form.discount, class="form-control") }} 
+                    {{ render_field(form.stock, class="form-control") }}    
 
                     <label for="category">Add a category</label>
                     <select name="category" id="category" class="form-control" required>
@@ -35,7 +36,7 @@
                     <div class="row">
                         {% if getproduct %}
 
-                        <div class="col-md-4"> <input type="file" name="image_1" id="image_1">
+                        <div class="col-md-4"><input type="file" name="image_1" id="image_1">
                             <a href="{{url_for('static',filename='product_images/' + getproduct.image_1)}}"> images/{{ getproduct.image_1}}</a>
                         </div>
 

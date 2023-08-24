@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+{% include 'navbar.html' %}
+    <h1 align="center">404 Not Found</h1>
+    <p align="center"><a href="{{ url_for('products.home') }}" class="btn btn-sm btn-outline-success">Back</a></p>
+{% endblock %}

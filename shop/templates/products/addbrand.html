@@ -11,20 +11,7 @@
                 <div>
                     {{ render_field(form.name, class="form-control") }}
                 </div>
-                <div class="container">
-                    <div class="row">
-                        {% if getcategory %}
-
-                        <div class="col-md-4"> <input type="file" name="image_category" id="image_category">
-                            <a href="{{url_for('static',filename='product_images/' + getcategory.image_category)}}"> product_images/{{ getcategory.image_category}}</a>
-                        </div>
-
-                        {% else %}
-                        <div class="col-md-4">{{ render_field(form.image_category) }}</div>
-                        {% endif %}
-                    </div>
-                </div>
-                <p><input type="submit" value="{% if getcategory %}Update {% else %}Add{% endif %} category" class="btn-outline-info">
+                <p><input type="submit" value="{% if getcategory %}Update {% else %}Add{% endif %} category" class="btn btn-outline-info">
                 </form>
             </div>
       <div class="col-md-1"></div>

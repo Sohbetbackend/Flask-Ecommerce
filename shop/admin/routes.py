@@ -52,7 +52,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hash_password = bcrypt.generate_password_hash(form.password.data)
-        user = User(name=form.name.data,username=form.username.data, email=form.email.data,
+        user = User(name=form.name.data,email=form.email.data,
                     password=hash_password)
         db.session.add(user)
         flash(f'welcome {form.name.data} Thanks for registering','success')

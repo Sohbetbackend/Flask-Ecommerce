@@ -1,7 +1,6 @@
 from flask import Flask, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_uploads import UploadSet, configure_uploads, IMAGES, patch_request_class
-import os
 from flask_restful import Api
 from flask_msearch import Search
 from flask_login import LoginManager
@@ -9,15 +8,10 @@ from flask_babel import Babel, lazy_gettext as _l
 from flask_moment import Moment
 from flask_bcrypt import Bcrypt
 from flask_migrate import Migrate
+from config import Config
 
-
-basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
-app.config['SECRET_KEY']='hfouewhfoiwefoquw'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['LANGUAGES'] = ['en', 'tk']
-app.config['UPLOADED_PHOTOS_DEST'] = os.path.join(basedir, 'static/product_images')
+app.config.from_object(Config)
 photos = UploadSet('photos', IMAGES)
 configure_uploads(app, photos)
 patch_request_class(app)
@@ -30,7 +24,6 @@ moment = Moment(app)
 search.init_app(app)
 migrate = Migrate(app, db)
 bcrypt = Bcrypt(app)
-
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -61,6 +54,9 @@ app.register_blueprint(carts_bp)
 
 from shop.customers import bp as customers_bp
 app.register_blueprint(customers_bp)
+
+from shop.errors import bp as errors_bp
+app.register_blueprint(errors_bp)
 
 from shop.api import bp as api_bp
 app.register_blueprint(api_bp, url_prefix='/api')

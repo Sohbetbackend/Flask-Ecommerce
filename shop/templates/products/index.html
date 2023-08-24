@@ -1,7 +1,7 @@
 {% extends 'layout.html' %}
 {% block content %}
 {% include 'navbar.html' %}
-<div class="bg-light" style="font-family: Times New Roman;">
+<div style="font-family: Times New Roman;">
   <div class="container">
 
     <!-- BANNERS -->
@@ -78,7 +78,7 @@
                     <input type="hidden" name="product_id" value="{{product.id}}">
                     <button type="submit" class="btn btn-sm btn-outline-light float-right" style="text-shadow: 1px 2px 2px #000; position: absolute; top: 53%; left: 80%;"><img src="{{ url_for('static', filename='images/add.png') }}" style="width:20px; height:20px;" alt=""></button>
                     <input type="hidden" name="quantity" value="1" min="1" max="20">
-                </form>
+                  </form>
               </div>
             </div>
           </div>
