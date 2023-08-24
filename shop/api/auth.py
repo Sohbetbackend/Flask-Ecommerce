@@ -3,6 +3,20 @@ from shop.customers.model import Customer
 from shop import db
 from shop.api import bp
 
+@bp.route('/login', methods=['GET', 'POST'])
+def login():
+    d = {}
+    if request.method == "POST":
+        contact = request.form['contact']
+
+        login = Customer.query.filter_by(contact=contact).first()
+
+        if login is None:
+
+            return jsonify(["Wrong Credentials"])
+        else:
+
+            return jsonify(["Success"]) 
 
 
 @bp.route('/register', methods=['GET', 'POST'])
