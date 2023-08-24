@@ -104,5 +104,3 @@ class Banner(db.Model, BannerAPIMixin):
         }
         return data
 
-
-db.create_all()

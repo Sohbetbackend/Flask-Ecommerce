@@ -94,5 +94,3 @@ class CustomerOrder(db.Model, OrdersAPIMixin):
         }
         return data
         
-
-db.create_all()
